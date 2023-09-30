@@ -1,0 +1,28 @@
+{
+  "variables": {
+    "aws_access_key": "{{env `AKIAQHCHX2H2GRWDCMPN`}}",
+    "aws_secret_key": "{{env `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`}}"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "us-west-2",
+      "source_ami": "ami-0f5ee92e2d63afc18",  // Replace this with the source AMI ID
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "my-ami-{{timestamp}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sudo apt-get update",
+        "sudo apt-get install -y apache2",
+        "sudo systemctl start apache2"
+      ]
+    }
+  ]
+}
