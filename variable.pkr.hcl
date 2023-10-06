@@ -8,11 +8,11 @@
 # }
 variable "region"{
     type = string
-    default = "ap-south-1"
+    default = "us-west-2"
 }
 variable "source_ami"{
     type = string
-    default = "ami-0f5ee92e2d63afc18"
+    default = "ami-03f65b8614a860c29"
 }
 variable "instance_type" {
     type = string
